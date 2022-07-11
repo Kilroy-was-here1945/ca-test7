@@ -98,11 +98,6 @@ console.log('Results for the extraLargeArray');
 console.log("insert", resultsInsert5.preciseWords);
 console.log("append", resultsAppend5.preciseWords);
 
-console.log(`
-results for the extraLargeArray
-append ${extraLargeArrayAppend.preciseWords}
-insert ${extraLargeArrayInsert.preciseWords}`)
-
 // NOTES
 // insert takes longer than append
 // extraLargeArray
