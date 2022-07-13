@@ -110,6 +110,7 @@ console.log("append", resultsAppend5.preciseWords);
 // insert 71.8 μs
 // append 121.2 μs
 
+// 1. addToZero runtime 142.8 μs
 const addToZero = (arr) => {
     for(let i = 0; i < arr.length; i++){
         for(let j = 0; j < arr.length; j++){
@@ -120,12 +121,12 @@ const addToZero = (arr) => {
     }
 }
 
-
 perf.start();
 addToZero([2,-2,4,2,6,7,-7])
 let resultsAddToZero = perf.stop();
 console.log("addToZero runtime", resultsAddToZero.preciseWords);
 
+// 2. hasUniqueChars runtime 14.5 μs
 const hasUniqueChars = (arr) => {
     const arr1 = Array.from(arr)
     let ans = true
@@ -144,6 +145,8 @@ hasUniqueChars("moonday")
 let hasUniqueCharsRuntime = perf.stop();
 console.log("hasUniqueChars runtime", hasUniqueCharsRuntime.preciseWords);
 
+
+// 3. panagrams runtime is 285.2 μs
 const panagrams = (s) => {
     let alphabet = "abcdefghijklmnopqrstuvwxyz";
     let regex = /\s/g;
@@ -157,8 +160,13 @@ const panagrams = (s) => {
    
    return "pangram";
  }
-
  console.log(panagrams('abcdefghijklmnopqrstuvwxyz'))
+perf.start();
+ panagrams('abcdefghijklmnopqrstuvwxyz')
+ let panagrams1 = perf.stop();
+ console.log("panagrams runtime is", panagrams1.preciseWords);
+
+// 4. findLongestWord runtime 620.1 μs
 
 const findLongestWord = (arr) => {
     let ans = ''
