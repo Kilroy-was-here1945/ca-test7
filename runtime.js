@@ -81,22 +81,23 @@ perf.start();
 doublerInsert(extraLargeArray);
 let resultsInsert5 = perf.stop();
 
-
-console.log('Results for the tinyArray');
+console.log(`Results for the tinyArray which has a length of ${tinyArray.length}`);
 console.log("insert", resultsInsert1.preciseWords);
 console.log("append", resultsAppend1.preciseWords);
-console.log('Results for the smallArray');
+
+console.log(`Results for the tinyArray which has a length of ${smallArray.length}`);
 console.log("insert", resultsInsert2.preciseWords);
 console.log("append", resultsAppend2.preciseWords);
-console.log('Results for the mediumArray');
+console.log(`Results for the tinyArray which has a length of ${mediumArray.length}`);
 console.log("insert", resultsInsert3.preciseWords);
 console.log("append", resultsAppend3.preciseWords);
-console.log('Results for the largeArray');
+console.log(`Results for the tinyArray which has a length of ${largeArray.length}`);
 console.log("insert", resultsInsert4.preciseWords);
 console.log("append", resultsAppend4.preciseWords);
-console.log('Results for the extraLargeArray');
+console.log(`Results for the tinyArray which has a length of ${extraLargeArray.length}`);
 console.log("insert", resultsInsert5.preciseWords);
 console.log("append", resultsAppend5.preciseWords);
+
 
 // NOTES
 // insert takes longer than append
@@ -109,7 +110,6 @@ console.log("append", resultsAppend5.preciseWords);
 // insert 71.8 μs
 // append 121.2 μs
 
-
 const addToZero = (arr) => {
     for(let i = 0; i < arr.length; i++){
         for(let j = 0; j < arr.length; j++){
@@ -120,7 +120,11 @@ const addToZero = (arr) => {
     }
 }
 
-console.log(addToZero([2,-2,4,2,6,7,-7]))
+
+perf.start();
+addToZero([2,-2,4,2,6,7,-7])
+let resultsAddToZero = perf.stop();
+console.log("addToZero runtime", resultsAddToZero.preciseWords);
 
 const hasUniqueChars = (arr) => {
     const arr1 = Array.from(arr)
@@ -135,6 +139,26 @@ const hasUniqueChars = (arr) => {
     return(ans)
 }
 console.log(hasUniqueChars("moonday"))
+perf.start();
+hasUniqueChars("moonday")
+let hasUniqueCharsRuntime = perf.stop();
+console.log("hasUniqueChars runtime", hasUniqueCharsRuntime.preciseWords);
+
+const panagrams = (s) => {
+    let alphabet = "abcdefghijklmnopqrstuvwxyz";
+    let regex = /\s/g;
+    let lowercase = s.toLowerCase().replace(regex, "");
+   
+    for(let i = 0; i < alphabet.length; i++){
+     if(lowercase.indexOf(alphabet[i]) === -1){
+       return "not pangram";
+     }
+    }
+   
+   return "pangram";
+ }
+
+ console.log(panagrams('abcdefghijklmnopqrstuvwxyz'))
 
 const findLongestWord = (arr) => {
     let ans = ''
@@ -153,4 +177,8 @@ const findLongestWord = (arr) => {
 }
 
 
+
+perf.start();
 findLongestWord(['hi', 'hello'])
+let findLongestWordRuntime = perf.stop();
+console.log("findLongestWord runtime", findLongestWordRuntime.preciseWords);
